@@ -1,0 +1,18 @@
+services:
+  text-generation-webui:
+    build: .
+    image: cgl/text-generation-webui
+    command: "--bf16"
+    ports:
+      - "7860:7860"
+      - "5000:5000"
+    volumes:
+      - "./models:/app/user_data/models"
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]
