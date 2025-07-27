@@ -7,7 +7,7 @@ services:
       - "7860:7860"
       - "5000:5000"
     volumes:
-      - "./models:/app/user_data/models"
+      - "./user_data:/app/user_data"
 
     deploy:
       resources:

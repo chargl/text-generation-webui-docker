@@ -27,6 +27,9 @@ WORKDIR /app
 RUN git clone --depth 1 https://github.com/oobabooga/text-generation-webui.git . && \
     pip3 install --no-cache-dir -r requirements/full/requirements_cuda128.txt
 
+# Add the provided utility script in the image
+COPY download.py .
+
 # Install nvcc for transformers loading quatization
 USER root
 RUN curl -O https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64/cuda-keyring_1.1-1_all.deb && \
